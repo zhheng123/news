@@ -12,18 +12,19 @@ import javax.annotation.Resource;
 @Controller
 @RequestMapping("/users/news")
 public class NewsController {
-	private static Logger log=Logger.getLogger(NewsController.class);
+	public static Logger log=Logger.getLogger(NewsController.class);
 	@Resource
 	NewService newService;
 	
 	@RequestMapping(value="/findAll/{id}",method=RequestMethod.GET)
 	@SystemControllerLog(description = "删除用户")  
-	private void test(@PathVariable("id")Integer id){
+	public void test(@PathVariable("id")Integer id){
 		System.out.println(id);
 		try {
 			newService.deleteLog(id);
 		} catch (Exception e) {
 			log.error(e);
+			e.printStackTrace();
 		}
 		System.out.println("测试成功=========================");
 	}
