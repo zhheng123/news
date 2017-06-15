@@ -7,9 +7,9 @@ import com.soda.services.NewService;
 public class NewServiceImpl extends CommonService implements NewService {
 
 	
-	public long deleteLog(Integer id) throws Exception {
+	public long deleteLog(String id) throws Exception {
 		StringBuffer  buffer = new StringBuffer();
-		buffer.append("delete from log where id='").append(id).append("'");
+		buffer.append("delete from log where id=").append(id);
 		return   executeAction(buffer.toString());
 	}
 	

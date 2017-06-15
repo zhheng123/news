@@ -18,7 +18,7 @@ public class NewsController {
 	
 	@RequestMapping(value="/findAll/{id}",method=RequestMethod.GET)
 	@SystemControllerLog(description = "É¾³ýÓÃ»§")  
-	public void test(@PathVariable("id")Integer id){
+	public void test(@PathVariable("id")String id){
 		System.out.println(id);
 		try {
 			newService.deleteLog(id);
