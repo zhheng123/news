@@ -18,7 +18,7 @@ public class NewsController {
 	
 	@RequestMapping(value="/findAll/{id}",method=RequestMethod.GET)
 	@SystemControllerLog(description = "删除用户")  
-	public void test(@PathVariable("id")String id){
+	public String test(@PathVariable("id")String id){
 		System.out.println(id);
 		try {
 			newService.deleteLog(id);
@@ -27,5 +27,20 @@ public class NewsController {
 			e.printStackTrace();
 		}
 		System.out.println("测试成功=========================");
+		return "a";
 	}
+	@RequestMapping(value="/test")
+	@SystemControllerLog(description = "测试2操作")  
+	public String test2(String id){
+		System.out.println(id);
+		try {
+			newService.deleteLog(id);
+		} catch (Exception e) {
+			log.error(e);
+			e.printStackTrace();
+		}
+		System.out.println("测试2操作");
+		return "a";
+	}
+	
 }

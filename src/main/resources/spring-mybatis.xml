@@ -111,14 +111,6 @@
 			<tx:method name="*" propagation="SUPPORTS" />
 		</tx:attributes>
 	</tx:advice>
-	 <!-- 拦截器配置--> 
-	 <mvc:interceptors> 
-		 <!-- SQL注入拦截--> 
-		 <mvc:interceptor> 
-			 <mvc:mapping path="/**"/> 
-			 <bean class="com.soda.Interceptor.SqlInjectInterceptor"></bean>
-		 </mvc:interceptor> 
-	 </mvc:interceptors>
 
 	<aop:config>
 		<aop:pointcut id="transactionPointcut" expression="execution(* com.soda.services.impl..*Impl.*(..))" />
