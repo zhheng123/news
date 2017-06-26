@@ -74,7 +74,7 @@ public class SystemLogAspect {
 //      user.setName("张三");
       String ip = "127.0.0.1";
        try {  
-          
+          System.out.println("后置通知================");
           String targetName = joinPoint.getTarget().getClass().getName();  
           String methodName = joinPoint.getSignature().getName();  
           Object[] arguments = joinPoint.getArgs();  

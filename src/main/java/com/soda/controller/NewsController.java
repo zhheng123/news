@@ -1,14 +1,19 @@
-package com.soda.Controller;
+package com.soda.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.soda.aop.SystemControllerLog;
 import com.soda.services.NewService;
-import javax.annotation.Resource;
 @Controller
 @RequestMapping("/users/news")
 public class NewsController {
@@ -31,16 +36,18 @@ public class NewsController {
 	}
 	@RequestMapping(value="/test")
 	@SystemControllerLog(description = "测试2操作")  
-	public String test2(String id){
-		System.out.println(id);
+	@ResponseBody
+	public Map test2(String id){
+		Map<String,Object>result=new HashMap<String,Object>();
 		try {
 			newService.deleteLog(id);
+			result.put("1","张衡");
+			result.put("2","张强");
 		} catch (Exception e) {
 			log.error(e);
 			e.printStackTrace();
 		}
-		System.out.println("测试2操作");
-		return "a";
+		return result;
 	}
 	
 }
