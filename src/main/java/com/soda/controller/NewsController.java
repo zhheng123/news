@@ -22,7 +22,7 @@ public class NewsController {
 	NewService newService;
 	
 	@RequestMapping(value="/findAll/{id}",method=RequestMethod.GET)
-	@SystemControllerLog(description = "删除用户")  
+	@SystemControllerLog(description = "鍒犻櫎鐢ㄦ埛")  
 	public String test(@PathVariable("id")String id){
 		System.out.println(id);
 		try {
@@ -31,18 +31,18 @@ public class NewsController {
 			log.error(e);
 			e.printStackTrace();
 		}
-		System.out.println("测试成功=========================");
+		System.out.println("娴嬭瘯鎴愬姛=========================");
 		return "a";
 	}
 	@RequestMapping(value="/test")
-	@SystemControllerLog(description = "测试2操作")  
+	@SystemControllerLog(description = "娴嬭瘯2鎿嶄綔")  
 	@ResponseBody
 	public Map test2(String id){
 		Map<String,Object>result=new HashMap<String,Object>();
 		try {
 			newService.deleteLog(id);
-			result.put("1","张衡");
-			result.put("2","张强");
+			result.put("1","寮犺　");
+			result.put("2","寮犲己");
 		} catch (Exception e) {
 			log.error(e);
 			e.printStackTrace();

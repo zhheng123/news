@@ -15,40 +15,40 @@ import org.springframework.stereotype.Component;
 @Aspect  
 @Component
 public class SystemLogAspect {
-	 //×¢ÈëServiceÓÃÓÚ°ÑÈÕÖ¾±£´æÊı¾İ¿â  
+	 //æ³¨å…¥Serviceç”¨äºæŠŠæ—¥å¿—ä¿å­˜æ•°æ®åº“  
      
-    //±¾µØÒì³£ÈÕÖ¾¼ÇÂ¼¶ÔÏó  
+    //æœ¬åœ°å¼‚å¸¸æ—¥å¿—è®°å½•å¯¹è±¡  
     private static final Logger logger = LoggerFactory.getLogger(SystemLogAspect.class);  
 
-    //Controller²ãÇĞµã  
+    //Controllerå±‚åˆ‡ç‚¹  
     @Pointcut("execution (* com.soda.Controller..*.*(..))")    
     public void controllerAspect() {  
     }  
                                       
     /** 	
-     * Ç°ÖÃÍ¨Öª ÓÃÓÚÀ¹½ØController²ã¼ÇÂ¼ÓÃ»§µÄ²Ù×÷ 
+     * å‰ç½®é€šçŸ¥ ç”¨äºæ‹¦æˆªControllerå±‚è®°å½•ç”¨æˆ·çš„æ“ä½œ 
      * 
-     * @param joinPoint ÇĞµã 
+     * @param joinPoint åˆ‡ç‚¹ 
      */  
     @Before("controllerAspect()")  
     public void doBefore(JoinPoint joinPoint) {  
-    	 System.out.println("==========Ö´ĞĞcontrollerÇ°ÖÃÍ¨Öª===============");
+    	 System.out.println("==========æ‰§è¡Œcontrollerå‰ç½®é€šçŸ¥===============");
     	 if(logger.isInfoEnabled()){
     	     logger.info("before " + joinPoint);
          }
     }  
 
-  //ÅäÖÃcontroller»·ÈÆÍ¨Öª,Ê¹ÓÃÔÚ·½·¨aspect()ÉÏ×¢²áµÄÇĞÈëµã
+  //é…ç½®controllerç¯ç»•é€šçŸ¥,ä½¿ç”¨åœ¨æ–¹æ³•aspect()ä¸Šæ³¨å†Œçš„åˆ‡å…¥ç‚¹
 /*    @Around("controllerAspect()")
     public void around(JoinPoint joinPoint){
-        System.out.println("==========¿ªÊ¼Ö´ĞĞcontroller»·ÈÆÍ¨Öª===============");
+        System.out.println("==========å¼€å§‹æ‰§è¡Œcontrollerç¯ç»•é€šçŸ¥===============");
         long start = System.currentTimeMillis();
         try {
             long end = System.currentTimeMillis();
             if(logger.isInfoEnabled()){
                 logger.info("around " + joinPoint + "\tUse time : " + (end - start) + " ms!");
             }
-            System.out.println("==========½áÊøÖ´ĞĞcontroller»·ÈÆÍ¨Öª===============");
+            System.out.println("==========ç»“æŸæ‰§è¡Œcontrollerç¯ç»•é€šçŸ¥===============");
         } catch (Throwable e) {
             long end = System.currentTimeMillis();
             if(logger.isInfoEnabled()){
@@ -58,23 +58,23 @@ public class SystemLogAspect {
     }*/
   
   /** 
-   * ºóÖÃÍ¨Öª ÓÃÓÚÀ¹½ØController²ã¼ÇÂ¼ÓÃ»§µÄ²Ù×÷ 
+   * åç½®é€šçŸ¥ ç”¨äºæ‹¦æˆªControllerå±‚è®°å½•ç”¨æˆ·çš„æ“ä½œ 
    * 
-   * @param joinPoint ÇĞµã 
+   * @param joinPoint åˆ‡ç‚¹ 
    */  
   @After("controllerAspect()")  
   public  void after(JoinPoint joinPoint) {  
 
      /* HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();  
       HttpSession session = request.getSession();  */
-      //¶ÁÈ¡sessionÖĞµÄÓÃ»§  
+      //è¯»å–sessionä¸­çš„ç”¨æˆ·  
      // User user = (User) session.getAttribute("user");  
-      //ÇëÇóµÄIP  
+      //è¯·æ±‚çš„IP  
       //String ip = request.getRemoteAddr();
-//      user.setName("ÕÅÈı");
+//      user.setName("å¼ ä¸‰");
       String ip = "127.0.0.1";
        try {  
-          System.out.println("ºóÖÃÍ¨Öª================");
+          System.out.println("åç½®é€šçŸ¥================");
           String targetName = joinPoint.getTarget().getClass().getName();  
           String methodName = joinPoint.getSignature().getName();  
           Object[] arguments = joinPoint.getArgs();  
@@ -92,16 +92,16 @@ public class SystemLogAspect {
                   }  
               }  
           }
-          //*========¿ØÖÆÌ¨Êä³ö=========*//  
-          System.out.println("=====controllerºóÖÃÍ¨Öª¿ªÊ¼=====");  
-          System.out.println("ÇëÇó·½·¨:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()")+"."+operationType);  
-          System.out.println("·½·¨ÃèÊö:" + operationName);  
-         /* System.out.println("ÇëÇóÈË:" + user.getName());  
-          System.out.println("ÇëÇóIP:" + ip);  
+          //*========æ§åˆ¶å°è¾“å‡º=========*//  
+          System.out.println("=====controlleråç½®é€šçŸ¥å¼€å§‹=====");  
+          System.out.println("è¯·æ±‚æ–¹æ³•:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()")+"."+operationType);  
+          System.out.println("æ–¹æ³•æè¿°:" + operationName);  
+         /* System.out.println("è¯·æ±‚äºº:" + user.getName());  
+          System.out.println("è¯·æ±‚IP:" + ip);  
           Log log=new Log();
           log.setOpertype(operationName);
           logService.add(log);*/
-//          //*========Êı¾İ¿âÈÕÖ¾=========*//  
+//          //*========æ•°æ®åº“æ—¥å¿—=========*//  
 //          SystemLog log = new SystemLog();  
 //          log.setId(UUID.randomUUID().toString());
 //          log.setDescription(operationName);  
@@ -113,27 +113,27 @@ public class SystemLogAspect {
 //          log.setParams( null);  
 //          log.setCreateBy(user.getName());  
 //          log.setCreateDate(new Date());  
-//          //±£´æÊı¾İ¿â  
+//          //ä¿å­˜æ•°æ®åº“  
 //          systemLogService.insert(log);  
-          System.out.println("=====controllerºóÖÃÍ¨Öª½áÊø=====");  
+          System.out.println("=====controlleråç½®é€šçŸ¥ç»“æŸ=====");  
       }  catch (Exception e) {  
-          //¼ÇÂ¼±¾µØÒì³£ÈÕÖ¾  
-          logger.error("==ºóÖÃÍ¨ÖªÒì³£==");  
-          logger.error("Òì³£ĞÅÏ¢:{}", e.getMessage());  
+          //è®°å½•æœ¬åœ°å¼‚å¸¸æ—¥å¿—  
+          logger.error("==åç½®é€šçŸ¥å¼‚å¸¸==");  
+          logger.error("å¼‚å¸¸ä¿¡æ¯:{}", e.getMessage());  
       }  
   } 
   
-  //ÅäÖÃºóÖÃ·µ»ØÍ¨Öª,Ê¹ÓÃÔÚ·½·¨aspect()ÉÏ×¢²áµÄÇĞÈëµã
+  //é…ç½®åç½®è¿”å›é€šçŸ¥,ä½¿ç”¨åœ¨æ–¹æ³•aspect()ä¸Šæ³¨å†Œçš„åˆ‡å…¥ç‚¹
     @AfterReturning("controllerAspect()")
     public void afterReturn(JoinPoint joinPoint){
-        System.out.println("=====Ö´ĞĞcontrollerºóÖÃ·µ»ØÍ¨Öª=====");  
+        System.out.println("=====æ‰§è¡Œcontrolleråç½®è¿”å›é€šçŸ¥=====");  
             if(logger.isInfoEnabled()){
                 logger.info("afterReturn " + joinPoint);
             }
     }
   
   /** 
-   * Òì³£Í¨Öª ÓÃÓÚÀ¹½Ø¼ÇÂ¼Òì³£ÈÕÖ¾ 
+   * å¼‚å¸¸é€šçŸ¥ ç”¨äºæ‹¦æˆªè®°å½•å¼‚å¸¸æ—¥å¿— 
    * 
    * @param joinPoint 
    * @param e 
@@ -142,14 +142,14 @@ public class SystemLogAspect {
    public  void doAfterThrowing(JoinPoint joinPoint, Throwable e) {  
       /*HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();  
       HttpSession session = request.getSession();  
-      //¶ÁÈ¡sessionÖĞµÄÓÃ»§  
+      //è¯»å–sessionä¸­çš„ç”¨æˆ·  
       User user = (User) session.getAttribute(WebConstants.CURRENT_USER);  
-      //»ñÈ¡ÇëÇóip  
+      //è·å–è¯·æ±‚ip  
       String ip = request.getRemoteAddr(); */ 
-      //»ñÈ¡ÓÃ»§ÇëÇó·½·¨µÄ²ÎÊı²¢ĞòÁĞ»¯ÎªJSON¸ñÊ½×Ö·û´®  
-      System.out.println("Òì³£=============================");
+      //è·å–ç”¨æˆ·è¯·æ±‚æ–¹æ³•çš„å‚æ•°å¹¶åºåˆ—åŒ–ä¸ºJSONæ ¼å¼å­—ç¬¦ä¸²  
+      System.out.println("å¼‚å¸¸=============================");
 //      User user = new User();
-//      user.setName("ÕÅÈı");
+//      user.setName("å¼ ä¸‰");
       String ip = "127.0.0.1";
        try {  
           
@@ -170,26 +170,26 @@ public class SystemLogAspect {
                   }  
               }  
           }
-          //*========¿ØÖÆÌ¨Êä³ö=========*//  
-          System.out.println("=====controllerÒì³£¿ªÊ¼=====");  
-          System.out.println("ÇëÇó·½·¨:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()")+"."+operationType);  
-          System.out.println("·½·¨ÃèÊö:" + operationName);  
-//          System.out.println("ÇëÇóÈË:" + user.getName());  
-          System.out.println("ÇëÇóIP:" + ip);  
+          //*========æ§åˆ¶å°è¾“å‡º=========*//  
+          System.out.println("=====controllerå¼‚å¸¸å¼€å§‹=====");  
+          System.out.println("è¯·æ±‚æ–¹æ³•:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()")+"."+operationType);  
+          System.out.println("æ–¹æ³•æè¿°:" + operationName);  
+//          System.out.println("è¯·æ±‚äºº:" + user.getName());  
+          System.out.println("è¯·æ±‚IP:" + ip);  
       }  catch (Exception ex) {  
-          //¼ÇÂ¼±¾µØÒì³£ÈÕÖ¾  
-          logger.error("==Òì³£Í¨ÖªÒì³£==");  
-          logger.error("Òì³£ĞÅÏ¢:{}", ex.getMessage());  
+          //è®°å½•æœ¬åœ°å¼‚å¸¸æ—¥å¿—  
+          logger.error("==å¼‚å¸¸é€šçŸ¥å¼‚å¸¸==");  
+          logger.error("å¼‚å¸¸ä¿¡æ¯:{}", ex.getMessage());  
       }  
-       /*==========¼ÇÂ¼±¾µØÒì³£ÈÕÖ¾==========*/  
+       /*==========è®°å½•æœ¬åœ°å¼‚å¸¸æ—¥å¿—==========*/  
 
   }  
 
     /** 
-     * »ñÈ¡×¢½âÖĞ¶Ô·½·¨µÄÃèÊöĞÅÏ¢ ÓÃÓÚController²ã×¢½â 
+     * è·å–æ³¨è§£ä¸­å¯¹æ–¹æ³•çš„æè¿°ä¿¡æ¯ ç”¨äºControllerå±‚æ³¨è§£ 
      * 
-     * @param joinPoint ÇĞµã 
-     * @return ·½·¨ÃèÊö 
+     * @param joinPoint åˆ‡ç‚¹ 
+     * @return æ–¹æ³•æè¿° 
      * @throws Exception 
      */  
     public static String getControllerMethodDescription(JoinPoint joinPoint) throws Exception {  

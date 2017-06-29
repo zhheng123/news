@@ -1,9 +1,9 @@
 package com.soda.enums;
 public enum ConstantEnum {
-	 	UNKONW_ERROR(-1, "н╢ж╙╢МнС"),
-	    SUCCESS(0, "Ёи╧╕"),
-	    PRIMARY_SCHOOL(100, "нр╡бдЦ©идэ╩╧тзиоп║я╖"),
-	    MIDDLE_SCHOOL(101, "дЦ©идэтзиоЁУжп"),
+	 	UNKONW_ERROR(-1, "Ф°╙Г÷╔И■≥Х╞╞"),
+	    SUCCESS(0, "Ф┬░Е┼÷"),
+	    PRIMARY_SCHOOL(100, "Ф┬▒Г▄°Д╫═Е▐╞Х┐╫Х©≤Е°╗Д╦┼Е╟▐Е╜╕"),
+	    MIDDLE_SCHOOL(101, "Д╫═Е▐╞Х┐╫Е°╗Д╦┼Е┬²Д╦╜"),
 	    ;
 
 
