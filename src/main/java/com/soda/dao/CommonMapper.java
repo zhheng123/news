@@ -7,73 +7,73 @@ import com.soda.bean.Params;
 
 public interface  CommonMapper {
 	/** 
-     * Ö´ĞĞÔöÉ¾¸ÄsqlÓï¾ä 
+     * æ‰§è¡Œå¢åˆ æ”¹sqlè¯­å¥ 
      *  
      * @author viogor 
-     * @param sql sqlÓï¾ä 
+     * @param sql sqlè¯­å¥ 
      * @return 
      */  
     public long executeAction(String sql);  
    
     /** 
-     * ¸ù¾İsqlÓï¾ä²éÑ¯µ¥µ÷Êı¾İ 
+     * æ ¹æ®sqlè¯­å¥æŸ¥è¯¢å•è°ƒæ•°æ® 
      *  
      * @author viogor 
-     * @param sql sqlÓï¾ä 
+     * @param sql sqlè¯­å¥ 
      * @return 
      */  
     public Map<String, Object> findOneData(String sql);  
       
     /** 
-     * ¸ù¾İsqlÓï¾ä²éÑ¯¶àµ÷Êı¾İ 
+     * æ ¹æ®sqlè¯­å¥æŸ¥è¯¢å¤šè°ƒæ•°æ® 
      *  
      * @author viogor 
-     * @param sql sqlÓï¾ä 
+     * @param sql sqlè¯­å¥ 
      * @return 
      */  
     public List<Map<String, Object>> findManyData(String sql);  
       
     /** 
-     * Ìí¼ÓÊµÌåÊı¾İ 
+     * æ·»åŠ å®ä½“æ•°æ® 
      *  
      * @author viogor 
-     * @param params Ìí¼Ó²ÎÊıÀà 
+     * @param params æ·»åŠ å‚æ•°ç±» 
      * @return 
      */  
     public int addEntity(Params params);  
       
     /** 
-     * ¸ù¾İsqlÓï¾ä²éÑ¯ÌõÊı 
+     * æ ¹æ®sqlè¯­å¥æŸ¥è¯¢æ¡æ•° 
      *  
      * @author viogor 
-     * @param sql sqlÓï¾ä 
+     * @param sql sqlè¯­å¥ 
      * @return 
      */  
     public long findCount(String sql);  
       
     /** 
-     * ÅúÁ¿Ìí¼Ó 
+     * æ‰¹é‡æ·»åŠ  
      *  
      * @author viogor 
-     * @param params Ìí¼Ó²ÎÊı 
+     * @param params æ·»åŠ å‚æ•° 
      * @return 
      */  
     public int batchAdd(Params params);  
       
     /** 
-     * ÅúÁ¿É¾³ı 
+     * æ‰¹é‡åˆ é™¤ 
      *  
      * @author viogor 
-     * @param params ²ÎÊıÀà 
+     * @param params å‚æ•°ç±» 
      * @return 
      */  
     public int batchDelete(Params params);  
       
     /** 
-     * ¸ù¾İsqlÓï¾ä²éÑ¯µ¥¸öÖµ 
+     * æ ¹æ®sqlè¯­å¥æŸ¥è¯¢å•ä¸ªå€¼ 
      *  
      * @author viogor 
-     * @param sql sqlÓï¾ä 
+     * @param sql sqlè¯­å¥ 
      * @return 
      */  
     public Object findOneValue(String sql);
